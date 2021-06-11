@@ -55,6 +55,8 @@ ChatBot::ChatBot(const ChatBot &source)
     _image = new wxBitmap();
     *_image = *source._image;
 
+    _chatLogic->SetChatbotHandle(this);
+
 }
 
 //Copy assignment
@@ -68,6 +70,7 @@ ChatBot &ChatBot::operator=(const ChatBot &source)
     _image = new wxBitmap();
     *_image = *source._image;
 
+    _chatLogic->SetChatbotHandle(this);
 }
 
 //Move constructor
@@ -84,6 +87,8 @@ ChatBot::ChatBot(ChatBot &&source)
     source._rootNode = nullptr;
     source._image = nullptr;
 
+    _chatLogic->SetChatbotHandle(this);
+
 }
 
 //Move assignment
@@ -99,6 +104,8 @@ ChatBot &ChatBot::operator=(ChatBot &&source)
     source._chatLogic = nullptr;
     source._rootNode = nullptr;
     source._image = nullptr;
+
+    _chatLogic->SetChatbotHandle(this);
 }
 ////
 //// EOF STUDENT CODE
