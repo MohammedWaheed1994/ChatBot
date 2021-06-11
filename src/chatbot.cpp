@@ -62,6 +62,8 @@ ChatBot::ChatBot(const ChatBot &source)
 //Copy assignment
 ChatBot &ChatBot::operator=(const ChatBot &source)
 {
+    if(this == &source) { return *this; }
+
     std::cout << "ChatBot Copy Assignment Operator\n";
     // Copy data handles
     _chatLogic = source._chatLogic;
@@ -71,6 +73,8 @@ ChatBot &ChatBot::operator=(const ChatBot &source)
     *_image = *source._image;
 
     _chatLogic->SetChatbotHandle(this);
+
+    return *this;
 }
 
 //Move constructor
@@ -95,6 +99,8 @@ ChatBot::ChatBot(ChatBot &&source)
 ChatBot &ChatBot::operator=(ChatBot &&source)
 {
     std::cout << "ChatBot Move Assignment Operator\n";
+
+    if(this == &source) { return *this; }
     // Copy data handles
     _chatLogic = source._chatLogic;
     _rootNode = source._rootNode;
@@ -106,6 +112,8 @@ ChatBot &ChatBot::operator=(ChatBot &&source)
     source._image = nullptr;
 
     _chatLogic->SetChatbotHandle(this);
+
+    return *this;
 }
 ////
 //// EOF STUDENT CODE
